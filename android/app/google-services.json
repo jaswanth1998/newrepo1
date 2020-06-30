@@ -1,0 +1,122 @@
+{
+  "project_info": {
+    "project_number": "929365153709",
+    "firebase_url": "https://doctorguruconsole.firebaseio.com",
+    "project_id": "doctorguruconsole",
+    "storage_bucket": "doctorguruconsole.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929365153709:android:cb9121931d8943e575f324",
+        "android_client_info": {
+          "package_name": "com.doctor.guru"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "929365153709-6mg206o3rg3uijf49oniblb9u7vidg0o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.doctor.guru",
+            "certificate_hash": "a91be65f9798679981183654c3ed06972d824ee9"
+          }
+        },
+        {
+          "client_id": "929365153709-uh74lnl0bss80a525e2s32gbn1tpf2d9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9iS2YMO0lJb6h_gCfBvbyWOV9cCnnyak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "929365153709-uh74lnl0bss80a525e2s32gbn1tpf2d9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929365153709:android:a246953b7d302edc75f324",
+        "android_client_info": {
+          "package_name": "com.doctor.guru.doctorguru"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "929365153709-51aenafts7ivhgfhf3nacrlhfruf460v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.doctor.guru.doctorguru",
+            "certificate_hash": "3989c5f089e5d7d77d9b455d9143ad279b51109e"
+          }
+        },
+        {
+          "client_id": "929365153709-g2ufnj49cqf80bsf9d9v52gsnjqondme.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.doctor.guru.doctorguru",
+            "certificate_hash": "a91be65f9798679981183654c3ed06972d824ee9"
+          }
+        },
+        {
+          "client_id": "929365153709-uh74lnl0bss80a525e2s32gbn1tpf2d9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9iS2YMO0lJb6h_gCfBvbyWOV9cCnnyak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "929365153709-uh74lnl0bss80a525e2s32gbn1tpf2d9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929365153709:android:3c647b06f4ecc0c875f324",
+        "android_client_info": {
+          "package_name": "com.doctor_token.main_doctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "929365153709-uh74lnl0bss80a525e2s32gbn1tpf2d9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9iS2YMO0lJb6h_gCfBvbyWOV9cCnnyak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "929365153709-uh74lnl0bss80a525e2s32gbn1tpf2d9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
