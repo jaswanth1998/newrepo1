@@ -58,7 +58,8 @@ class DataBaseServices {
       String city,
       String hospitalName,
       String notificationToken,
-      String qualificition) async {
+      String qualificition,
+      int doctorFee) async {
     return await doctorsRference.document(uId).setData({
       "UID": uId,
       "Doctor": true,
@@ -73,7 +74,8 @@ class DataBaseServices {
       "specialization": specilizationDropdownValue,
       "Notification Token":notificationToken,
       "Qualificition":qualificition,
-      "leave":false
+      "leave":false,
+      "doctorFee":doctorFee
       // ""
     });
   }

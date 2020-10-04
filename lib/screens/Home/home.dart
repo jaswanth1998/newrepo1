@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:getit/screens/AsignToken/assignToken.dart';
 import 'package:getit/screens/Home/catgary.dart';
 import 'package:getit/screens/Home/myAppotiments.dart';
 import 'package:getit/screens/Home/showDrawer.dart';
@@ -60,7 +61,8 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           title: Text("Doctor guru"),
         ),
-        body: StreamBuilder(
+        body: 
+        StreamBuilder(
             stream: Firestore.instance
                 .collection('Users')
                 .document(this.userid)
@@ -84,6 +86,8 @@ class _HomeState extends State<Home> {
                             .where("Doctor User ID", isEqualTo: this.userid)
                             .where("status", isEqualTo: "success")
                             .where("refund", isEqualTo: false)
+                            .where("token", isEqualTo: 0)
+                            
                             .snapshots(),
                         builder:
                             (context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -92,6 +96,8 @@ class _HomeState extends State<Home> {
                             return Text("Loading");
                           }
                           var userDocument = snapshot.data.documents;
+                          // userDocument = snapshot.data.documentChanges()
+                          
 
                           return 
                           Card(
@@ -102,7 +108,7 @@ class _HomeState extends State<Home> {
                             child: Center(
                               child: Column(children: <Widget>[
                                 SizedBox(height: 5),
-                                Text("New Appotiments",
+                                Text("New Appointments",
                                     style: TextStyle(fontSize: 21)),
                                 SizedBox(height: 10),
                                 Text(
@@ -127,7 +133,7 @@ class _HomeState extends State<Home> {
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  MyAppotiments(
+                                                  AssignToken(
                                                 userId: this.userid,
                                               ),
                                               // settings: RouteSettings(

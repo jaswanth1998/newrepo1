@@ -103,7 +103,7 @@ class _MainRefundPageState extends State<MainRefundPage> with SingleTickerProvid
                     children: <Widget>[
                       Text("\n Doctor Id:   " + appotiment.doctorid + " \n"),
                       Text(appotiment.datenow + "\n"),
-                      Text("Still pending with doctor \n"),
+                      Text("Still pending with Doctor \n"),
                       appotiment.tokenNum != 0
                           ? Text("your token Number :" +
                               appotiment.tokenNum.toString())
@@ -185,7 +185,7 @@ class _MainRefundPageState extends State<MainRefundPage> with SingleTickerProvid
                     children: <Widget>[
                       Text("\n Doctor Id:   " + appotiment.doctorid + " \n"),
                       Text(appotiment.datenow + "\n"),
-                      Text("Still pending with doctor \n"),
+                      Text("Still pending with Doctor \n"),
                       appotiment.tokenNum != 0
                           ? Text("your token Number :" +
                               appotiment.tokenNum.toString())

@@ -1,50 +1,54 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:getit/models/appotimentModel.dart';
 import 'package:getit/services/database.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
-class MyAppotiments extends StatefulWidget {
+class AssignToken extends StatefulWidget {
   String userId;
-  MyAppotiments({this.userId});
+  AssignToken({this.userId});
   @override
-  _MyAppotimentsState createState() => _MyAppotimentsState(userId: this.userId);
+  _AssignTokenState createState() => _AssignTokenState(userId: this.userId);
 }
 
-class _MyAppotimentsState extends State<MyAppotiments> {
+
+class _AssignTokenState extends State<AssignToken> {
   bool showErr = false;
   String userId;
   int tokenNum;
-  _MyAppotimentsState({this.userId});
 
+  
+  _AssignTokenState({this.userId});
   List<AppotimentModel> data = [];
   @override
   Widget build(BuildContext context) {
-    print(this.userId + " iam ffrom appointents");
     return Scaffold(
       appBar: AppBar(
-        title: Text("Your Appointments"),
+        title: Text("Assign Tokens"),
       ),
-      body: 
-      StreamBuilder(
-        stream: Firestore.instance
+      body: SingleChildScrollView(child: Column(
+        children: [
+          StreamBuilder(
+             stream: Firestore.instance
             .collection("Appotiments")
             .where("Doctor User ID", isEqualTo: userId)
             .where("status", isEqualTo: "success")
             .where("refund", isEqualTo: false)
+            .where("token", isEqualTo: 0)
             .orderBy("CompletedAt")
+
             .snapshots(),
-        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) {
-            print("Loading");
-            return Text("Loading");
-          }
-          var userDocument = snapshot;
-          if (userDocument.data.documents.length == 0) {
+             builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                            print("Loading");
+                            return Text("Loading");
+                          }
+                         var userDocument = snapshot;
+                           if (snapshot.data.documents.length == 0) {
             return Text("No Appointments");
           }
 
-          this.data = (userDocument.data.documents.map((useData) {
+                   this.data = (userDocument.data.documents.map((useData) {
             String getdatamap;
 
       
@@ -65,34 +69,25 @@ class _MyAppotimentsState extends State<MyAppotiments> {
                 //  useData["status"],
                 );
           })).toList();
-          return SingleChildScrollView(
-            child: Column(
-                children: data.map((appotiment) {
-              print(appotiment.datenow);
-              // return Text(appotiment.datenow.toString());
-              return Card(
-                  margin: EdgeInsets.all(10),
-                  child: Column(
-                    children: <Widget>[
-                      Text("\n Patient Name: " + appotiment.patienName + " \n"),
-                      // Text(" Patient age: " + appotiment.patientAge.toString() + " \n"),
+          
+
+          return 
+             Column(
+               children: data.map((appotiment) {
+                 print(appotiment.datenow);
+                 return Card(
+                   margin: EdgeInsets.all(10),
+                   child: Column(
+                     children: <Widget>[
+                          Text("\n Patient Name: " + appotiment.patienName + " \n"),
                       Text(" Patient gender: " + appotiment.patientGender + " \n"),
                       Text("Booked Slot: " + appotiment.bookedSlot + " \n"),
-                      // Text("\n Doctor Id: " + appotiment.doctorid + " \n"),
-                      // Text(appotiment.datenow + "\n"),
-                      // Text("Still pending with Doctor \n"),
-                      appotiment.tokenNum != 0
+ appotiment.tokenNum != 0
                           ? Text("your token Number :" +
                               appotiment.tokenNum.toString())
                           :
-                          // RaisedButton(
-                          //   child: Text("Cancel"),
-                          //   onPressed: (){
-                          //     DataBaseServices().refundTheMoney(appotiment.appotimentId);
-
-                          // }),
                           Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
                                 RaisedButton(
@@ -101,7 +96,7 @@ class _MyAppotimentsState extends State<MyAppotiments> {
                                       DataBaseServices().refundTheMoney(
                                           appotiment.appotimentId);
                                     }),
-                                SizedBox(
+                                     SizedBox(
                                   width: 20,
                                 ),
                                 RaisedButton(
@@ -212,13 +207,16 @@ class _MyAppotimentsState extends State<MyAppotiments> {
                                           });
                                     })
                               ],
-                            )
-                    ],
-                  ));
-            }).toList()),
-          );
-        },
-      ),
+                          )
+                     ],
+                   ));
+               }).toList());
+      
+
+             }
+             ),
+        ],
+      ))
     );
   }
 }

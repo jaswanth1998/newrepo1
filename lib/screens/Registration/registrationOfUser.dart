@@ -26,7 +26,7 @@ class _RegistrationOfUserState extends State<RegistrationOfUser> {
 
   String gender = "Male";
 
-  String city;
+  String city = 'Kadapa';
 
   String dropdownValue = 'Male';
   String specilizationDropdownValue = "General";
@@ -35,6 +35,8 @@ class _RegistrationOfUserState extends State<RegistrationOfUser> {
   int exprenice;
   String userNotificationToken = "";
   String qualificition = "";
+  int doctorFee;
+
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +46,7 @@ class _RegistrationOfUserState extends State<RegistrationOfUser> {
     setData.then((data) => {
           this.userNotificationToken = data.getString("User Notification Token")
         });
-    return 
-    SingleChildScrollView(
+    return SingleChildScrollView(
       reverse: true,
       child: Padding(
         padding:
@@ -88,12 +89,12 @@ class _RegistrationOfUserState extends State<RegistrationOfUser> {
                       TextFormField(
                         initialValue: this.qualificition,
                         decoration: textInputDecarator.copyWith(
-                            hintText: "Qualificition"),
+                            hintText: "Qualification"),
                         onChanged: (val) {
                           this.qualificition = val;
                         },
                         validator: (val) =>
-                            val.length <= 1 ? 'Enter Qualificition' : null,
+                            val.length <= 1 ? 'Enter Qualification' : null,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -160,6 +161,8 @@ class _RegistrationOfUserState extends State<RegistrationOfUser> {
                               "Psychology",
                               "Cardiology",
                               "Physiology",
+                              "Dermotology",
+                              "Homeopathy"
                             ].map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
@@ -169,12 +172,47 @@ class _RegistrationOfUserState extends State<RegistrationOfUser> {
                           ),
                         ],
                       ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text("Select city"),
+                          ),
+                          Expanded(
+                            child: DropdownButton<String>(
+                              value: city,
+                              icon: Icon(Icons.arrow_downward),
+                              iconSize: 24,
+                              elevation: 16,
+                              style: TextStyle(color: Colors.deepPurple),
+                              underline: Container(
+                                height: 2,
+                                color: Colors.deepPurpleAccent,
+                              ),
+                              onChanged: (String newValue) {
+                                setState(() {
+                                  this.city = newValue;
+                                });
+                              },
+                              items: <String>[
+                                'Kadapa',
+                                'Mydukur',
+                                'proddatur'
+                              ].map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                          )
+                        ],
+                      ),
                       TextFormField(
                         initialValue: this.age.toString() == "null"
                             ? ""
                             : this.age.toString(),
                         decoration:
-                            textInputDecarator.copyWith(hintText: "age"),
+                            textInputDecarator.copyWith(hintText: "Age"),
                         validator: (val) => val.length > 2 || val.length == 0
                             ? 'Enter correct age'
                             : null,
@@ -209,7 +247,7 @@ class _RegistrationOfUserState extends State<RegistrationOfUser> {
                       ),
                       TextFormField(
                         decoration: textInputDecarator.copyWith(
-                            hintText: "Offical Phone"),
+                            hintText: "Official Phone"),
                         validator: (val) => val.length != 10
                             ? 'Enter correct phone number'
                             : null,
@@ -218,15 +256,26 @@ class _RegistrationOfUserState extends State<RegistrationOfUser> {
                           this.phoneNum = val;
                         },
                       ),
-                      TextFormField(
-                        decoration:
-                            textInputDecarator.copyWith(hintText: "City"),
+
+                       TextFormField(
+                        
+                        decoration: textInputDecarator.copyWith(
+                            hintText: "Enter Fee"),
                         onChanged: (val) {
-                          this.city = val;
+                          this.doctorFee = int.parse(val);
                         },
                         validator: (val) =>
-                            val.length <= 1 ? 'Enter City' : null,
+                            val.length <= 1 ? 'Enter Fee' : null,
                       ),
+                      // TextFormField(
+                      //   decoration:
+                      //       textInputDecarator.copyWith(hintText: "City"),
+                      //   onChanged: (val) {
+                      //     this.city = val;
+                      //   },
+                      //   validator: (val) =>
+                      //       val.length <= 1 ? 'Enter City' : null,
+                      // ),
                       SizedBox(height: 20),
                       RaisedButton(
                           child: Text("Submit"),
@@ -252,7 +301,9 @@ class _RegistrationOfUserState extends State<RegistrationOfUser> {
                                   this.city,
                                   this.hospitalName,
                                   this.userNotificationToken,
-                                  this.qualificition);
+                                  this.qualificition,
+                                  this.doctorFee,
+                                  );
                               print(result);
                             }
                           })

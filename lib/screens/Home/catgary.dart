@@ -27,7 +27,7 @@ class _CatgageryState extends State<Catgagery> {
   List<String> user = ["hi", "hello", "working"];
   List<String> catgary = [
   " General",
-"Diabaties",
+"Diabeties",
 "ENT",
 "Nephrology",
 "Neurology",
@@ -36,6 +36,9 @@ class _CatgageryState extends State<Catgagery> {
 "Psychology",
 "Cardiology",
 "Physiology",
+"Dentist",
+"Dermotology",
+"Homeopathy"
   ];
   // List<Color> useColor = [Colors.red,Colors.blue];
   

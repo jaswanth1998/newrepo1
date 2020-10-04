@@ -106,12 +106,12 @@ class _EditProfileState extends State<EditProfile> {
                                   TextFormField(
                                     initialValue: this.qualificition,
                                     decoration: textInputDecarator.copyWith(
-                                        hintText: "Qualificition"),
+                                        hintText: "Qualification"),
                                     onChanged: (val) {
                                       this.qualificition = val;
                                     },
                                     validator: (val) => val.length <= 1
-                                        ? 'Enter Qualificition'
+                                        ? 'Enter Qualification'
                                         : null,
                                   ),
                                  
@@ -198,7 +198,7 @@ class _EditProfileState extends State<EditProfile> {
                                         ? ""
                                         : this.age.toString(),
                                     decoration: textInputDecarator.copyWith(
-                                        hintText: "age"),
+                                        hintText: "Age"),
                                     validator: (val) =>
                                         val.length > 2 || val.length == 0
                                             ? 'Enter correct age'
@@ -239,7 +239,7 @@ class _EditProfileState extends State<EditProfile> {
                                   TextFormField(
                                     initialValue: this.phoneNum,
                                     decoration: textInputDecarator.copyWith(
-                                        hintText: "Offical Phone"),
+                                        hintText: "Official Phone"),
                                     validator: (val) => val.length != 10
                                         ? 'Enter correct phone number'
                                         : null,
@@ -284,7 +284,9 @@ class _EditProfileState extends State<EditProfile> {
                                                   this.city,
                                                   this.hospitalName,
                                                   this.userNotificationToken,
-                                                  this.qualificition);
+                                                  this.qualificition,
+                                                  123
+                                                  );
                                           print(result);
                                         }
                                       })

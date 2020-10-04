@@ -91,7 +91,7 @@ class _DisplayFromState extends State<DisplayFrom> {
                   child: Container(
                       width: double.infinity,
                       child:
-                          Text("Forget Password", textAlign: TextAlign.start)),
+                          Text("Forgot Password", textAlign: TextAlign.start)),
                 ),
               ),
               SizedBox(height: 3),

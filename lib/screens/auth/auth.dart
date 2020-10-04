@@ -19,7 +19,7 @@ class _AuthState extends State<Auth> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color.fromRGBO(51, 153, 204, 1),
+        color: Color.fromRGBO(255, 255, 255, 1),
         child: Column(
           children: <Widget>[
             SizedBox(height: 40),
@@ -28,7 +28,7 @@ class _AuthState extends State<Auth> {
               style: TextStyle(fontSize: 34, color: Colors.white),
               textAlign: TextAlign.center,
             ),
-            new Image.asset('assests/splash.gif')
+            new Image.asset('assests/icon.png')
           ],
         ),
       ),
