@@ -97,7 +97,7 @@ class _DisplayFromState extends State<DisplayFrom> {
               SizedBox(height: 3),
               Text(
                 this.displayErr,
-                style: TextStyle(color: Colors.redAccent),
+                style: this.displayErr !="Email Has sent"?TextStyle(color: Colors.redAccent):TextStyle(color: Colors.black),
               ),
               SizedBox(height: 3),
               showPass
@@ -110,6 +110,7 @@ class _DisplayFromState extends State<DisplayFrom> {
                           String result = await AuthService()
                               .loginWithEmailAndPassword(
                                   this.emailOfUser.trim(), this.pass);
+                                  
 
                           if (result.length > 2) {
                             this.setState(() {
@@ -138,8 +139,12 @@ class _DisplayFromState extends State<DisplayFrom> {
                       child: Text("Get Email"),
                       onPressed: () async {
                         try {
-                          await FirebaseAuth.instance
+                        await FirebaseAuth.instance
                               .sendPasswordResetEmail(email: this.emailOfUser);
+                              print("ia m resukt");
+                                  setState(() {
+                                    this.displayErr = "Email Has sent";
+                                  });
                         } catch (e) {
                           print("i am errror code");
                           print(e);

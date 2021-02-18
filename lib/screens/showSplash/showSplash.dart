@@ -13,7 +13,7 @@ class _ShowSplashState extends State<ShowSplash> {
   }
 
   void navigationPage() {
-    Navigator.of(context).pushReplacementNamed('/wrapper');
+    Navigator.of(context).popAndPushNamed('/wrapper');
   }
 
   @override
